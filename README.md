@@ -1,4 +1,4 @@
-# bitcoin-read-only-wallet-nodejs
+# CLI Bitcoin read-only wallet
 
 CLI tool to generate a readable transaction from an xpub/ypub address that's exported from a Bitcoin wallet such as a Trezor or Ledger.
 
