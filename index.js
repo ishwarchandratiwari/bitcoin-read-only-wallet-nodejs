@@ -1,11 +1,10 @@
 const moment = require("moment");
-const settings = require("./imports/settings");
 const fetchTransactionData = require("./imports/fetchTransactionData");
 const generateAddresses = require("./imports/generateAddresses");
 const colorConsole = require("./imports/colorConsoleLog");
 const makeCoffee = require("./imports/makeCoffee");
 const ypubToXpub = require("./imports/ypubToXpub");
-const minimist = require("minimist");
+const settings = require("./imports/settings");
 
 const { greenConsoleLog, redConsoleLog, blueBgConsoleLog } = colorConsole;
 
@@ -97,9 +96,9 @@ const printHistory = xpub => {
 		xpub = ypubToXpub(xpub);
 	}
 
-	const addressIndex = 60;
-	const receiveAddresses = generateAddresses(xpub, addressIndex);
-	const changeAddresses = generateAddresses(xpub, addressIndex, 1);
+	const { addressIndexes } = settings;
+	const receiveAddresses = generateAddresses(xpub, addressIndexes);
+	const changeAddresses = generateAddresses(xpub, addressIndexes, 1);
 
 	//process.exit(1);
 	processAddresses([...receiveAddresses, ...changeAddresses]).then(
@@ -131,12 +130,4 @@ const printHistory = xpub => {
 	);
 };
 
-const args = minimist(process.argv.slice(2));
-const xpub = args.p;
-
-if (!xpub) {
-	console.log("ERROR: Pass through xpub/ypub as an argument");
-	process.exit(1);
-}
-
-printHistory(xpub);
+printHistory(settings.xpub);
