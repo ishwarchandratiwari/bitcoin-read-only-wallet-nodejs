@@ -13,15 +13,12 @@ These instructions will get you a copy of the project up and running on your loc
 git clone https://github.com/Jasonvdb/bitcoin-read-only-wallet-nodejs.git
 
 npm install
-
 ```
 
 ## Running
 
 ```
-
-node index.js -p <xpub/ypub>
-
+node index.js -p <xpub/ypub> -i <until_address_index>
 ```
 
 ## Limitations
